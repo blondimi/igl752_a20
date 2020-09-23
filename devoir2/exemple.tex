@@ -1,0 +1,110 @@
+\documentclass{article}
+
+%% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+
+%% LTL
+\newcommand{\AP}{\mathit{AP}}
+\newcommand{\true}{{\mathit{vrai}}}
+\newcommand{\false}{{\mathit{faux}}}
+\newcommand{\X}{{\mathsf{X}}}
+\newcommand{\F}{{\mathsf{F}}}
+\newcommand{\G}{{\mathsf{G}}}
+\newcommand{\U}{\mathrel{\mathsf{U}}}
+\newcommand{\sat}[1]{\llbracket#1 \rrbracket}
+
+%% Automates et langages formels
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\renewcommand{\L}{\mathcal{L}}
+
+%% Autre
+\newcommand{\avance}{{\large$\bigstar$}}
+
+%% Titre
+\title{IGL502/752: devoir 2}
+\author{Foo McBar}
+\date{6 octobre 2020}
+
+\begin{document}
+\maketitle
+
+%% Contenu
+\section*{Question 1}
+
+\begin{enumerate}[(a)]
+
+\item Mon expression: $s_1 = a(a + b + c + d +
+  \varepsilon)((ab)^*(aabac + d)^*)(a + b)^\omega$. On a $a^\omega \in
+  \L(s_1)$ et $b^\omega \not\in \L(s_1)$
+
+\item ...
+
+\item ...
+
+\end{enumerate}
+
+\section*{Question 2}
+
+\begin{enumerate}[(a)]
+
+\item ...
+
+    \begin{center}
+    \begin{tikzpicture}[auto, node distance=2.25cm, very thick, initial text=]
+      \node[state, initial]                      (q0) {$q_0$};
+      \node[state,       right of=q0, accepting] (q1) {$q_1$};
+      \node[state,       right of=q1]            (q2) {$q_2$};
+      \node[state, above right of=q2]            (q3) {$q_3$};
+      \node[state, below right of=q2]            (q4) {$q_4$};
+
+      \path[->]
+      (q0) edge[loop above]    node       {$a$}    ()
+      (q0) edge[]              node       {$b, c$} (q1)
+      (q1) edge[loop above]    node       {$a$}    ()
+      (q1) edge[]              node       {$c$}    (q2)
+      (q2) edge[bend left]     node       {$b$}    (q0)
+      (q2) edge[bend left=15]  node       {$a$}    (q3)
+      (q2) edge[bend right=15] node[swap] {$a$}    (q4)
+      ;
+    \end{tikzpicture}
+  \end{center}
+
+\item ...
+
+\item ...
+
+\end{enumerate}
+
+\section*{Question 3}
+
+...
+
+\section*{Question 4}
+
+\begin{enumerate}[(a)]
+  
+\item $(\F p) \rightarrow (\G q)$...
+  
+\item $\neg \F \G(\neg p \lor \neg q)$...
+  
+\item $p \U (p \land (q \U \neg p))$...
+  
+\item $\G((\X p) \U q)$...
+
+\end{enumerate}
+
+\section*{Question 5}
+
+\begin{enumerate}[(a)]
+\item ...
+
+\item ...
+\end{enumerate}
+
+\end{document}
