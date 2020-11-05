@@ -10,12 +10,15 @@
 
 %% Algorithmes
 \usepackage[ruled, french, onelanguage, noend]{algorithm2e}
+\definecolor{colComment}{rgb}{0.13, 0.55, 0.13}
+\newcommand\commentstyle[1]{\ttfamily\textcolor{colComment}{#1}}
+\SetCommentSty{commentstyle}
 \newcommand{\algskip}{\vspace{3pt}}
 \newcommand{\true}{{\mathit{vrai}}}
 \newcommand{\false}{{\mathit{faux}}}
+\SetKwFunction{make}{make}
 
 %% BDD
-\newcommand{\make}{{\texttt{make}}}
 \newcommand{\var}[1]{\mathit{var}(#1)}
 \newcommand{\lo}[1]{\mathit{lo}(#1)}
 \newcommand{\hi}[1]{\mathit{hi}(#1)}
@@ -51,11 +54,11 @@
       \If{$t = \false$}{\Return{$0$}}
       \ElseIf{$t = \true$}{\Return{$1$}}
       \Else{
-        $v_0 \leftarrow \text{\buildp{$t[0/x_i]$, $i+1$}}$\;
-        $v_1 \leftarrow \text{\buildp{$t[1/x_i]$, $i+1$}}$\;
+        $v_0 \leftarrow \buildp{$t[0/x_i]$, $i+1$}$\;
+        $v_1 \leftarrow \buildp{$t[1/x_i]$, $i+1$}$\;
 
         \algskip
-        \Return{$\make(x_i, v_0, v_1)$}
+        \Return{\make{$x_i$, $v_0$, $v_1$}}
       }
     }
     
@@ -83,16 +86,16 @@
     \algskip
     
     \If{$u_1 \in \{0, 1\}$ et $u_2 \in \{0, 1\}$}{
-      \Return{$u_1 \bigcirc u_2$}
+      \Return{$u_1 \land u_2$}
     }
     \ElseIf(\tcp*[f]{Creuser à gauche}){$v_1 < v_2$}{
-      \Return{$\make(v_1, \apply(\ell_1, u_2), \apply(h_1, u_2))$}
+      \Return{\make{$v_1$, \apply{$\ell_1$, $u_2$}, \apply{$h_1$, $u_2$}}}
     }
     \ElseIf(\tcp*[f]{Creuser à droite}){$v_1 > v_2$}{
-      \Return{$\make(v_2, \apply(u_1, \ell_2), \apply(u_1, h_2))$}
+      \Return{\make{$v_2$, \apply{$u_1$, $\ell_2$}, \apply{$u_1$, $h_2$}}}
     }
     \Else(\tcp*[f]{Creuser des deux côtés}){
-      \Return{$\make(v_1, \apply(\ell_1, \ell_2), \apply(h_1, h_2))$}
+      \Return{\make{$v_1$, \apply{$\ell_1$, $\ell_2$}, \apply{$h_1$, $h_2$}}}
     }
   }
 \end{algorithm}
