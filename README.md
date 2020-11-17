@@ -13,3 +13,6 @@ _Fichiers complémentaires du cours IGL502/752 – Techniques de vérification e
 
 ### NuSMV
 - [Page officielle](http://nusmv.fbk.eu/)
+
+### LoLA
+- [Page officielle](http://service-technology.org/lola/)
