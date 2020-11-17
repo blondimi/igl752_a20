@@ -16,3 +16,6 @@ _Fichiers complémentaires du cours IGL502/752 – Techniques de vérification e
 
 ### LoLA
 - [Page officielle](http://service-technology.org/lola/)
+
+### PRISM
+- [Page officielle](http://www.prismmodelchecker.org/)
